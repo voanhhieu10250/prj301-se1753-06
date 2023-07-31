@@ -1,0 +1,83 @@
+.container {
+  @apply w-full relative;
+
+  > h1 {
+    @apply text-2xl font-bold text-center my-3;
+  }
+  .roundOption {
+    @apply flex justify-center;
+
+    label,
+    p {
+      @apply text-lg;
+    }
+    select {
+      @apply text-lg bg-slate-200;
+    }
+  }
+}
+
+.slider {
+  @apply w-full overflow-hidden relative;
+}
+
+.endRound {
+  perspective: 1000px;
+  @apply z-[1] w-full max-w-[1000px] h-[70vh] min-h-[450px] max-h-[700px] relative overflow-hidden mx-auto;
+}
+.modal {
+  position: relative;
+  height: 90%;
+  width: 90%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-color);
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  @apply mx-auto;
+  p {
+    margin: 0;
+  }
+  ul {
+    flex: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: auto;
+  }
+  .buttons {
+    @apply gap-3 flex items-center mt-3 text-lg;
+
+    button {
+      @apply w-full block bg-white rounded-lg hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 shadow;
+    }
+    .backToMenu {
+      @apply text-indigo-600 font-semibold hover:text-indigo-500 hover:underline hover:underline-offset-2;
+    }
+  }
+}
+.shuffle,
+.defiFirst {
+  @apply flex relative justify-center items-center gap-1 text-lg;
+}
+.shuffleForgotten {
+  @apply text-indigo-600 font-semibold text-lg hover:text-indigo-500 hover:underline hover:underline-offset-2;
+}
+
+@media screen and (min-width: 768px) {
+  .slider .endRound .modal ul {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .modal {
+    height: 90%;
+    width: 80%;
+    max-width: 1200px;
+    max-height: 1000px;
+  }
+}

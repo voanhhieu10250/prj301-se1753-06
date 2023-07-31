@@ -1,0 +1,122 @@
+.flipCard {
+  background-color: transparent;
+  width: 100%;
+  max-width: 1000px;
+  height: 70vh;
+  min-height: 450px;
+  max-height: 700px;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  height: 90%;
+  width: 90%;
+  transition: transform 0.3s;
+  transform-style: preserve-3d;
+  margin-top: 20px;
+  background-color: var(--card-color);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+  .cardInnerFront,
+  .cardInnerBack {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding: 20px;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cardInnerBack {
+    transform: rotateX(180deg);
+    .cardHeader {
+      visibility: hidden;
+    }
+    * {
+      pointer-events: none;
+    }
+  }
+  .cardHeader {
+    transform: visibility 0.3s;
+    @apply w-full relative text-center text-xl;
+
+    small {
+      @apply block;
+    }
+  }
+
+  .cardBody {
+    @apply text-4xl my-2 mx-1 w-full flex justify-center items-center flex-col flex-1;
+  }
+  .cardFooder {
+    @apply w-full flex justify-between gap-3;
+
+    button {
+      @apply flex justify-center items-center w-full bg-white rounded-lg hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 shadow;
+
+      img {
+        display: block;
+        width: 18px;
+      }
+      * {
+        pointer-events: none;
+      }
+    }
+    .forgotActive {
+      @apply bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4;
+    }
+  }
+}
+.rotateCard {
+  transform: rotateX(180deg);
+  .cardInnerBack {
+    .cardHeader {
+      visibility: visible;
+    }
+    * {
+      pointer-events: auto;
+    }
+  }
+  .cardInnerFront {
+    .cardHeader {
+      visibility: hidden;
+    }
+    * {
+      pointer-events: none;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .card {
+    .cardFooder {
+      button {
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+  .card {
+    height: 90%;
+    width: 80%;
+    max-width: 1200px;
+    max-height: 1000px;
+    .cardFooder {
+      button {
+        font-size: 20px;
+      }
+    }
+  }
+}
